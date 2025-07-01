@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ChevronDown } from "lucide-react"
+import { Mail, MessageCircle, Github, Twitter } from "lucide-react"
 
 const greetings = ["Hello", "こんにちは", "Bonjour", "¡Hola!", "你好", "안녕하세요"]
 
@@ -56,6 +57,24 @@ export default function HomePage() {
                   <br />
                   フッ軽な情報収集、ものづくり大好き学生
                 </p>
+                {/* Contact */}
+                <div className="space-y-4">
+                  {/* <h4 className="text-lg font-semibold">Contact</h4> */}
+                  <div className="flex space-x-4">
+                    <a href="ryoga3or1@gmail.com" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
+                      <Mail className="h-5 w-5" />
+                    </a>
+                    <a href="/contact" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="h-5 w-5" />
+                    </a>
+                    <a href="https://github.com/3or1Ryoga" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
+                      <Github className="h-5 w-5" />
+                    </a>
+                    <a href="https://x.com/3or1r" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
+                      <Twitter className="h-5 w-5" />
+                    </a>
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-wrap gap-4">
