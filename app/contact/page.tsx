@@ -26,22 +26,10 @@ const questions = [
     options: ["1ヶ月以内", "2〜3ヶ月", "3〜6ヶ月", "6ヶ月以上", "特に決まっていない"],
   },
   {
-    id: "target",
-    question: "ターゲット層は？",
-    type: "text",
-    placeholder: "例：20代〜30代の女性、企業の経営者など",
-  },
-  {
-    id: "reference",
-    question: "参考サイトはありますか？",
-    type: "textarea",
-    placeholder: "URLや具体的な説明をお聞かせください",
-  },
-  {
     id: "features",
-    question: "必要な機能があれば教えてください",
-    type: "textarea",
-    placeholder: "例：お問い合わせフォーム、ブログ機能、予約システムなど",
+    question: "特に必要な機能があれば教えてください",
+    type: "select",
+    options: ["お問い合わせフォーム", "ブログ機能", "予約システム", "チャットボット" , "その他", "特に決まっていない"],
   },
   {
     id: "contact",
@@ -50,6 +38,8 @@ const questions = [
     fields: ["name", "email", "phone"],
   },
 ]
+
+// https://forms.gle/zu7tVgXrcGp11twP6
 
 export default function ContactPage() {
   const [currentStep, setCurrentStep] = useState(0)
@@ -60,13 +50,83 @@ export default function ContactPage() {
     setAnswers((prev) => ({ ...prev, [questionId]: answer }))
   }
 
-  const nextStep = () => {
+  const nextStep = async () => {
     if (currentStep < questions.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
-      // Submit form
-      console.log("Form submitted:", answers)
-      setIsCompleted(true)
+
+      try {
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ answers }), // ここでanswersオブジェクトを送信しています
+        });
+
+        if (response.ok) {
+          console.log("データの保存に成功しました。");
+          setIsCompleted(true);
+        } else {
+          const errorData = await response.json();
+          console.error("サーバーエラー:", errorData.message);
+          alert("データの保存に失敗しました。");
+        }
+      } catch (error) {
+        console.error("クライアントサイドエラー:", error);
+        alert("エラーが発生しました。");
+      }
+    
+      // --- Start of New Code ---
+
+      // // 1. Create a unique name for a temporary iframe
+      // const iframeName = "hidden_iframe_for_google_form";
+
+      // // 2. Create the hidden iframe and add it to the page
+      // const iframe = document.createElement("iframe");
+      // iframe.name = iframeName;
+      // iframe.style.display = "none";
+      // document.body.appendChild(iframe);
+
+      // // 3. Create a form element in memory
+      // const form = document.createElement("form");
+      // form.method = "POST";
+      // form.action = "https://docs.google.com/forms/d/e/1FAIpQLSdc2H5CVpI0d_jF09TmkNv3XyEOr3aK0pZ-cT3b2A1f6j9G7w/formResponse";
+      // form.target = iframeName; // Target the form submission to the hidden iframe
+
+      // // 4. Create hidden input fields for each piece of data
+      // const formData: { [key: string]: string } = {
+      //   "entry.1805051935": answers.siteType || "",
+      //   "entry.183416045": answers.budget || "",
+      //   "entry.1982548280": answers.timeline || "",
+      //   "entry.1121081308": answers.reference || "",
+      //   "entry.1481105820": answers.features || "",
+      //   "entry.1857563503": `名前: ${answers.contact?.name || ""}\nメール: ${answers.contact?.email || ""}\n電話: ${answers.contact?.phone || '未入力'}`,
+      // };
+
+      // for (const key in formData) {
+      //   const input = document.createElement("input");
+      //   input.type = "hidden";
+      //   input.name = key;
+      //   input.value = formData[key];
+      //   form.appendChild(input);
+      // }
+
+      // // 5. Add the form to the page and submit it
+      // document.body.appendChild(form);
+      // form.submit();
+
+      // // 6. Clean up the iframe and form after a short delay
+      // setTimeout(() => {
+      //   document.body.removeChild(form);
+      //   document.body.removeChild(iframe);
+      // }, 100);
+
+      // // 7. Assume submission was successful and move to the completion screen
+      // console.log("Form data submitted via iframe.");
+      // setIsCompleted(true);
+
+      // // --- End of New Code ---
     }
   }
 
@@ -98,7 +158,7 @@ export default function ContactPage() {
           <div className="space-y-4">
             <Button
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-lg font-semibold w-full sm:w-auto"
-              onClick={() => window.open("https://line.me/ti/p/YOUR_LINE_ID", "_blank")}
+              onClick={() => window.open("https://line.me/ti/p/3or1r", "_blank")}
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               LINEで結果を受け取る
@@ -163,7 +223,7 @@ export default function ContactPage() {
               </div>
             )}
 
-            {currentQuestion.type === "text" && (
+            {/* {currentQuestion.type === "text" && (
               <Input
                 placeholder={currentQuestion.placeholder}
                 value={answers[currentQuestion.id] || ""}
@@ -179,7 +239,7 @@ export default function ContactPage() {
                 onChange={(e) => handleAnswer(currentQuestion.id, e.target.value)}
                 className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 min-h-[120px]"
               />
-            )}
+            )} */}
 
             {currentQuestion.type === "contact" && (
               <div className="space-y-4">
@@ -254,18 +314,23 @@ export default function ContactPage() {
           <h3 className="text-2xl font-bold mb-4">その他のお問い合わせ方法</h3>
           <p className="text-gray-300 mb-6">フォームでのお問い合わせが難しい場合は、直接ご連絡ください。</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="ryoga3or1@gmail.com" target="_blank" rel="noopener noreferrer">
             <Button
               variant="outline"
               className="border-[#E7D0A9] text-[#E7D0A9] hover:bg-[#E7D0A9] hover:text-black bg-transparent"
             >
               メールで問い合わせ
             </Button>
+            </a>
+
+            <a href="https://line.me/ti/p/3or1r" target="_blank" rel="noopener noreferrer">
             <Button
               variant="outline"
               className="border-[#E7D0A9] text-[#E7D0A9] hover:bg-[#E7D0A9] hover:text-black bg-transparent"
             >
               LINEで問い合わせ
             </Button>
+            </a>
           </div>
         </div>
       </section>

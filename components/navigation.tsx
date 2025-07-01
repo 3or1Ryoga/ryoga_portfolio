@@ -21,8 +21,8 @@ export default function Navigation() {
 
   const navItems = [
     { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
     { href: "/portfolio", label: "Portfolio" },
+    { href: "/services", label: "Services" },
     { href: "/contact", label: "Contact" },
   ]
 
@@ -36,7 +36,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="text-2xl font-bold text-[#E7D0A9]">
-            RY
+            
           </Link>
 
           {/* Desktop Navigation */}

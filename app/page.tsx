@@ -52,9 +52,9 @@ export default function HomePage() {
                   <span className="block text-[#E7D0A9]">& Developer</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                  クライアント様との対話を大切にし、
+                  けん玉忍者を目指して修行中のエンジニア
                   <br />
-                  最後まで寄り添うWeb制作を心がけています。
+                  フッ軽な情報収集、ものづくり大好き学生
                 </p>
               </div>
 
@@ -78,7 +78,7 @@ export default function HomePage() {
 
             <div className="relative">
               <div className="relative w-full h-96 md:h-[500px] rounded-2xl overflow-hidden">
-                <Image src="/placeholder.svg?height=500&width=400" alt="Profile" fill className="object-cover" />
+                <Image src="/ryoga_high_3.jpeg?height=500&width=400" alt="Profile" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               </div>
             </div>
@@ -101,17 +101,26 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-[#E7D0A9]">丁寧なヒアリングから始まる、心に響くWeb制作</h3>
+              <h3 className="text-2xl font-bold text-[#E7D0A9]">自分が死んでも価値を生み出し続けるようなシステムを作りたい18才</h3>
               <div className="space-y-4 text-lg text-gray-300 leading-relaxed">
                 <p>
-                  私は、単にWebサイトを作るだけでなく、クライアント様の想いやビジョンを深く理解し、
-                  それを形にすることを大切にしています。
+                  酒井涼雅、兵庫県神戸市出身。
                 </p>
                 <p>
-                  デザインからコーディングまで一貫して手がけ、お客様が本当に求めているものを
-                  丁寧なヒアリングを通じて見つけ出します。
+                  <a href="https://u-18.makers-u.jp/">MAKERS UNIVERSITY U-18</a> 10期生／
+                  
+                  関西最大のテックインカレ <a href="https://x.com/TechUni1026">Tech.Uni</a>運営メンバー／
+                  <a href="https://ut-lab.toggle.co.jp/">UT-Lab </a>オフラインメンバー／
+                  <a href="https://x.com/CELLForStudents">CELL</a> 1期生／
+                  <a href="https://www.instagram.com/enkendama.jp?utm_source=ig_web_button_share_sheet&igsh=MW16Mm00aXRyN25tYg==">けん玉普及活動</a>家／
+                  <a href="https://applikoshien.jp/results/2024">アプリ甲子園2024</a> マイナビ賞／
+                  高校生アプリアイデアコンテスト 優秀賞／
+                  神戸市発シリコンバレー起業家育成プログラム 2期生／
+                  令和6年度「電波の日・情報通信月間」受賞／
+                  福田記念財団 奨学生／
+                  東京大学寄附講座GCI 修了生／
                 </p>
-                <p>プロジェクトの最初から最後まで、お客様に寄り添い続けることで、 期待を超える成果物をお届けします。</p>
+                <p>高校1年生でシリコンバレーに渡米し起業を志す／AI・Web3分野での起業を目指し奮闘中／人生の裏目標は、けん玉ニンジャとして世界を旅すること。</p>
               </div>
             </div>
 
@@ -121,12 +130,12 @@ export default function HomePage() {
                 {[
                   "Web Design",
                   "UI/UX Design",
-                  "HTML/CSS",
+                  "Swift",
                   "JavaScript",
                   "React",
                   "Next.js",
-                  "Responsive Design",
-                  "SEO Optimization",
+                  "Presentation",
+                  "Strategy",
                 ].map((skill) => (
                   <div key={skill} className="bg-gray-800 p-3 rounded-lg text-center">
                     <span className="text-sm font-medium">{skill}</span>
@@ -138,10 +147,85 @@ export default function HomePage() {
         </div>
       </section>
 
-      
+      {/* Portfolio Preview */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-12">
+            <span className="text-[#E7D0A9]">Projects</span>
+          </h2>
 
-      {/* Services Preview */}
-      <section id="services" className="py-20 px-6 bg-gray-800">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* {[1, 2, 3].map((item) => (
+              
+            ))} */}
+            <div className="group cursor-pointer">
+              <div className="relative h-64 bg-gray-800 rounded-xl overflow-hidden mb-4">
+                <a href="/services">
+                <Image
+                  src={`/web_image2.png?height=256&width=384`}
+                  alt={`Portfolio1`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-[#E7D0A9] font-semibold">View Project</span>
+                </div>
+                </a>
+              </div>
+              <h3 className="text-xl font-bold mb-2"></h3>
+              <p className="text-gray-400">Web Design & Development</p>
+            </div>
+            <div className="group cursor-pointer">
+              <div className="relative h-64 bg-gray-800 rounded-xl overflow-hidden mb-4">
+              <a href="https://enkendama.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src={`/ken.JPG?height=256&width=384`}
+                  alt={`Portfolio1`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-[#E7D0A9] font-semibold">View Project</span>
+                </div>
+                </a>
+              </div>
+              <h3 className="text-xl font-bold mb-2"></h3>
+              <p className="text-gray-400">EN-Kendama</p>
+            </div>
+            <div className="group cursor-pointer">
+              <div className="relative h-64 bg-gray-800 rounded-xl overflow-hidden mb-4">
+              <a href="/portfolio">
+                <Image
+                  src={`/ai.png?height=256&width=384`}
+                  alt={`Portfolio1`}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="text-[#E7D0A9] font-semibold">View Project</span>
+                </div>
+                </a>
+              </div>
+              <h3 className="text-xl font-bold mb-2"></h3>
+              <p className="text-gray-400">AI-App Development</p>
+            </div>
+            
+            
+            
+          </div>
+
+          <Link href="/portfolio">
+            <Button className="bg-[#E7D0A9] text-black hover:bg-[#D7B26B] px-8 py-3 text-lg font-semibold">
+              全ての作品を見る
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+
+            {/* Services Preview */}
+            <section id="services" className="py-20 px-6 bg-gray-800">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-8">
             <span className="text-[#E7D0A9]">Services</span>
@@ -168,76 +252,6 @@ export default function HomePage() {
           <Link href="/services">
             <Button className="bg-[#E7D0A9] text-black hover:bg-[#D7B26B] px-8 py-3 text-lg font-semibold">
               詳しく見る
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-      {/* Portfolio Preview */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-12">
-            <span className="text-[#E7D0A9]">Projects</span>
-          </h2>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {/* {[1, 2, 3].map((item) => (
-              
-            ))} */}
-            <div className="group cursor-pointer">
-              <div className="relative h-64 bg-gray-800 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src={`/placeholder.svg?height=256&width=384`}
-                  alt={`Portfolio1`}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-[#E7D0A9] font-semibold">View Project</span>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-2"></h3>
-              <p className="text-gray-400">Web Design & Development</p>
-            </div>
-            <div className="group cursor-pointer">
-              <div className="relative h-64 bg-gray-800 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src={`/placeholder.svg?height=256&width=384`}
-                  alt={`Portfolio1`}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-[#E7D0A9] font-semibold">View Project</span>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-2"></h3>
-              <p className="text-gray-400">Web Design & Development</p>
-            </div>
-            <div className="group cursor-pointer">
-              <div className="relative h-64 bg-gray-800 rounded-xl overflow-hidden mb-4">
-                <Image
-                  src={`/placeholder.svg?height=256&width=384`}
-                  alt={`Portfolio1`}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <span className="text-[#E7D0A9] font-semibold">View Project</span>
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-2"></h3>
-              <p className="text-gray-400">Web Design & Development</p>
-            </div>
-            
-            
-            
-          </div>
-
-          <Link href="/portfolio">
-            <Button className="bg-[#E7D0A9] text-black hover:bg-[#D7B26B] px-8 py-3 text-lg font-semibold">
-              全ての実績を見る
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

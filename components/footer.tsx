@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-[#E7D0A9]">RY</h3>
+            <h3 className="text-2xl font-bold text-[#E7D0A9]">Ryoga</h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Web Designer & Developer
               <br />
@@ -24,8 +24,8 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { href: "/", label: "Home" },
-                { href: "/services", label: "Services" },
                 { href: "/portfolio", label: "Portfolio" },
+                { href: "/services", label: "Services" },
                 { href: "/contact", label: "Contact" },
               ].map((item) => (
                 <li key={item.href}>
@@ -52,16 +52,16 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold">Contact</h4>
             <div className="flex space-x-4">
-              <a href="mailto:contact@example.com" className="text-gray-400 hover:text-[#E7D0A9] transition-colors">
+              <a href="ryoga3or1@gmail.com" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
                 <Mail className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#E7D0A9] transition-colors">
+              <a href="/contact" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#E7D0A9] transition-colors">
+              <a href="https://github.com/3or1Ryoga" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-[#E7D0A9] transition-colors">
+              <a href="https://x.com/3or1r" className="text-gray-400 hover:text-[#E7D0A9] transition-colors" target="_blank" rel="noopener noreferrer">
                 <Twitter className="h-5 w-5" />
               </a>
             </div>

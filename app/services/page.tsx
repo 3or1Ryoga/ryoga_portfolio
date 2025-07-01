@@ -60,7 +60,7 @@ export default function ServicesPage() {
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             <span className="text-[#E7D0A9]">Services</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">ホームページ制作サービス</p>
+          {/* <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">ホームページ制作サービス</p> */}
         </div>
       </section>
 
@@ -106,7 +106,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Process */}
-      <section className="py-20 px-6">
+      {/* <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center">制作の流れ</h2>
 
@@ -127,7 +127,7 @@ export default function ServicesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Limitations */}
       <section className="py-20 px-6 bg-gray-800">
@@ -149,12 +149,12 @@ export default function ServicesPage() {
           <p className="text-xl mb-8 opacity-80">
             まずはお気軽にお問い合わせください。詳しいお見積りをご提案いたします。
           </p>
-          <Link href="/contact">
+          <a href="/contact">
             <Button className="bg-black text-[#E7D0A9] hover:bg-gray-800 px-8 py-3 text-lg font-semibold">
               お問い合わせ・お見積り
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-          </Link>
+          </a>
         </div>
       </section>
     </div>
