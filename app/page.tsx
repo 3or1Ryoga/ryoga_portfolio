@@ -53,8 +53,7 @@ export default function HomePage() {
                   <span className="block text-[#E7D0A9]">& Developer</span>
                 </h1>
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                  けん玉忍者を目指して修行中のエンジニア
-                  <br />
+                  けん玉忍者を目指して修行中のエンジニア／
                   フッ軽な情報収集、ものづくり大好き学生
                 </p>
                 {/* Contact */}
