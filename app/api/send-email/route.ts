@@ -82,37 +82,67 @@
 // }
 
 
+// 2　ダーーーー
+
+// import { NextResponse } from 'next/server';
+// import fs from 'fs/promises';
+// import path from 'path';
+
+// export async function POST(request: Request) {
+//   try {
+//     const answers = await request.json();
+
+//     // 保存するデータに受付日時を追加
+//     const dataToSave = {
+//       receivedAt: new Date().toISOString(),
+//       ...answers,
+//     };
+
+//     // 保存先のファイルパスを指定 (プロジェクトのルートに data.json という名前で保存)
+//     const filePath = path.join(process.cwd(), 'data.json');
+
+//     // 既存のデータを読み込む
+//     let existingData = [];
+//     try {
+//       const fileContent = await fs.readFile(filePath, 'utf-8');
+//       existingData = JSON.parse(fileContent);
+//     } catch (error) {
+//       // ファイルが存在しない場合は何もしない (初回実行時)
+//     }
+
+//     // 新しいデータを追加して、ファイルに書き込む
+//     existingData.push(dataToSave);
+//     await fs.writeFile(filePath, JSON.stringify(existingData, null, 2));
+
+//     console.log('データが正常にファイルに保存されました。');
+//     return NextResponse.json({ message: 'データは正常に保存されました' }, { status: 200 });
+
+//   } catch (error) {
+//     console.error('データの保存中にエラーが発生しました:', error);
+//     return NextResponse.json({ message: 'データの保存に失敗しました' }, { status: 500 });
+//   }
+// }
+
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { kv } from '@vercel/kv';
 
 export async function POST(request: Request) {
   try {
-    const answers = await request.json();
+    const { answers } = await request.json();
 
-    // 保存するデータに受付日時を追加
+    // 保存するデータに、一意のIDと受付日時を追加
+    const submissionId = `submission_${Date.now()}`;
     const dataToSave = {
+      id: submissionId,
       receivedAt: new Date().toISOString(),
       ...answers,
     };
 
-    // 保存先のファイルパスを指定 (プロジェクトのルートに data.json という名前で保存)
-    const filePath = path.join(process.cwd(), 'data.json');
+    // Vercel KVにデータを保存します
+    // 'submissions' という名前のリストに、今回のデータを追加
+    await kv.lpush('submissions', dataToSave);
 
-    // 既存のデータを読み込む
-    let existingData = [];
-    try {
-      const fileContent = await fs.readFile(filePath, 'utf-8');
-      existingData = JSON.parse(fileContent);
-    } catch (error) {
-      // ファイルが存在しない場合は何もしない (初回実行時)
-    }
-
-    // 新しいデータを追加して、ファイルに書き込む
-    existingData.push(dataToSave);
-    await fs.writeFile(filePath, JSON.stringify(existingData, null, 2));
-
-    console.log('データが正常にファイルに保存されました。');
+    console.log('データがVercel KVに正常に保存されました。');
     return NextResponse.json({ message: 'データは正常に保存されました' }, { status: 200 });
 
   } catch (error) {

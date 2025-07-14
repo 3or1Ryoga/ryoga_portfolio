@@ -12,5 +12,19 @@
         "phone": "sgsdf"
       }
     }
+  },
+  {
+    "receivedAt": "2025-07-01T12:49:37.090Z",
+    "answers": {
+      "siteType": "コーポレートサイト",
+      "budget": "30万円〜50万円",
+      "timeline": "6ヶ月以上",
+      "features": "お問い合わせフォーム",
+      "contact": {
+        "name": "あd",
+        "email": "あdファ",
+        "phone": "あfdさ"
+      }
+    }
   }
 ]
